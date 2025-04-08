@@ -408,6 +408,19 @@ typedef enum _sai_vlan_attr_t
     /** Custom range base value */
     SAI_VLAN_ATTR_CUSTOM_RANGE_START = 0x10000000,
 
+    /**
+     * @brief Enable/Disable ARP & NDP suppression
+     *
+     * When enabled, the ARP and NDP messages are trapped to CPU instead of
+     * getting copied (and flooding the vlan). Default is set to false
+     * for backward compatibility reasons
+     *
+     * @type bool
+     * @flags CREATE_AND_SET
+     * @default false
+     */
+    SAI_VLAN_ATTR_NEIGHBOR_SUPPRESSION_ENABLE,
+
     /** End of custom range base */
     SAI_VLAN_ATTR_CUSTOM_RANGE_END
 
