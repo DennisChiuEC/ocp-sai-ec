@@ -2409,6 +2409,83 @@ typedef enum _sai_port_attr_t
     /** Custom range base value */
     SAI_PORT_ATTR_CUSTOM_RANGE_START = 0x10000000,
 
+    /**
+     * @brief Blocking STP packet on the port
+     *
+     * @type bool
+     * @flags CREATE_AND_SET
+     * @default false
+     */
+    SAI_PORT_ATTR_STP_BLOCKING = SAI_PORT_ATTR_CUSTOM_RANGE_START + 3,
+
+    /**
+     * @brief Scheduler for port on egress stage, Default no limits.
+     *
+     * #SAI_SCHEDULER_ATTR_MAX_BANDWIDTH_RATE & #SAI_SCHEDULER_ATTR_MAX_BANDWIDTH_BURST_RATE
+     * attributes alone valid. Rest will be ignored.
+     *
+     * @type sai_object_id_t
+     * @flags CREATE_AND_SET
+     * @objects SAI_OBJECT_TYPE_SCHEDULER
+     * @allownull true
+     * @default SAI_NULL_OBJECT_ID
+     */
+    SAI_PORT_ATTR_QOS_EGRESS_SCHEDULER_PROFILE_ID,
+
+    /**
+     * @brief Scheduler for port on ingress stage, Default no limits.
+     *
+     * #SAI_SCHEDULER_ATTR_MAX_BANDWIDTH_RATE & #SAI_SCHEDULER_ATTR_MAX_BANDWIDTH_BURST_RATE
+     * attributes alone valid. Rest will be ignored.
+     *
+     * @type sai_object_id_t
+     * @flags CREATE_AND_SET
+     * @objects SAI_OBJECT_TYPE_SCHEDULER
+     * @allownull true
+     * @default SAI_NULL_OBJECT_ID
+     */
+    SAI_PORT_ATTR_QOS_INGRESS_SCHEDULER_PROFILE_ID,
+
+    /**
+     * @brief Port Link is MC-LAG peer link or not.
+     *
+     * @type bool
+     * @flags CREATE_AND_SET
+     * @default false
+     */
+    SAI_PORT_ATTR_MCLAG_PEER_LINK,
+
+    /**
+     * @brief Synchronization Status
+     *
+     * @type bool
+     * @flags CREATE_AND_SET
+     * @default false
+     */
+    SAI_PORT_ATTR_SYNC_TO_EXT_PHY,
+
+    /**
+     * @brief Enable PFC Deadlock Detection and Recovery (DLDR).
+     *
+     * A deadlock is assumed to have occurred when a queue is in a XOFF
+     * state for more than a configurable (SAI_SWITCH_ATTR_PFC_TC_DLD_INTERVAL)
+     * amount of time.
+     *
+     * @type sai_uint8_t
+     * @flags CREATE_AND_SET
+     * @default 0
+     */
+    SAI_PORT_ATTR_ENABLE_PFC_DLDR,
+
+    /**
+     * @brief Enable/Disable blocking BUM flooding traffic on port.
+     *
+     * @type bool
+     * @flags CREATE_AND_SET
+     * @default false
+     */
+    SAI_PORT_ATTR_FLOOD_BLOCK_ENABLE,
+
     /** End of custom range base */
     SAI_PORT_ATTR_CUSTOM_RANGE_END
 
